@@ -1,0 +1,16 @@
+{
+  "backend": {
+    "host": "127.0.0.1",
+    "port": 8765
+  },
+  "downloads": {
+    "output_dir": "~/Downloads/NeonGrab",
+    "max_concurrent": 3
+  },
+  "engine": {
+    "cookies_file": null,
+    "proxy": null,
+    "workers": 16,
+    "fragments": 24
+  }
+}
