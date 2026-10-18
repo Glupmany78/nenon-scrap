@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>NEON GRAB</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="brand">
+        <img src="icons/icon.svg" alt="" class="logo" />
+        <span class="wordmark">NEON<span class="accent">GRAB</span></span>
+      </div>
+      <div class="header-right">
+        <span class="status-dot" id="statusDot"></span>
+        <span class="status-text" id="statusText">checking…</span>
+        <label class="toggle" title="Enable NEON GRAB">
+          <input type="checkbox" id="enableToggle" />
+          <span class="toggle-track"><span class="toggle-thumb"></span></span>
+        </label>
+        <button class="icon-btn" id="settingsBtn" title="Settings">⚙</button>
+      </div>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab active" data-tab="media">Media</button>
+      <button class="tab" data-tab="downloads">Active</button>
+      <button class="tab" data-tab="history">History</button>
+      <button class="tab" data-tab="settings">Settings</button>
+    </nav>
+
+    <main class="content">
+
+      <section class="panel active" data-panel="media">
+        <div class="page-info">
+          <div class="page-host" id="pageHost">—</div>
+          <div class="page-title" id="pageTitle"></div>
+          <div class="page-row">
+            <span class="media-count" id="mediaCount">0 items</span>
+            <button class="ghost-btn" id="rescanBtn">Rescan</button>
+          </div>
+        </div>
+        <div class="media-grid" id="mediaGrid"></div>
+        <div class="empty" id="mediaEmpty">No media detected yet.<br/>Reload the page to activate detection.</div>
+      </section>
+
+      <section class="panel" data-panel="downloads">
+        <div class="panel-head">
+          <span class="panel-title">ACTIVE DOWNLOADS</span>
+        </div>
+        <div class="job-list" id="activeList"></div>
+        <div class="empty" id="activeEmpty">No active downloads.</div>
+      </section>
+
+      <section class="panel" data-panel="history">
+        <div class="panel-head">
+          <span class="panel-title">HISTORY</span>
+          <button class="danger-btn" id="clearHistoryBtn">Clear</button>
+        </div>
+        <div class="job-list" id="historyList"></div>
+        <div class="empty" id="historyEmpty">No history yet.</div>
+      </section>
+
+      <section class="panel" data-panel="settings">
+        <div class="settings-group">
+          <label class="settings-label">Backend URL</label>
+          <input class="input" id="apiBaseInput" type="text" placeholder="http://127.0.0.1:8765" />
+        </div>
+        <div class="settings-group">
+          <label class="settings-label">API Token</label>
+          <input class="input" id="apiTokenInput" type="password" placeholder="paste token from backend console" />
+          <div class="settings-hint">
+            Printed on backend startup. Also stored at <code>~/.neon-grab/token</code>.
+          </div>
+        </div>
+        <div class="settings-group">
+          <label class="settings-label">Download Destination</label>
+          <input class="input" id="outputDirInput" type="text" placeholder="~/Downloads/NeonGrab" />
+          <button class="ghost-btn" id="saveConfigBtn">Save Destination</button>
+        </div>
+        <div class="settings-group">
+          <label class="settings-label">Max Concurrent</label>
+          <input class="input" id="maxConcurrentInput" type="number" min="1" max="16" />
+        </div>
+        <div class="settings-group">
+          <label class="toggle-row">
+            <input type="checkbox" id="showVideoGlow" />
+            <span>Show neon glow on videos</span>
+          </label>
+          <label class="toggle-row">
+            <input type="checkbox" id="showImageGlow" />
+            <span>Show neon glow on image hover</span>
+          </label>
+        </div>
+        <div class="settings-group">
+          <button class="primary-btn" id="saveSettingsBtn">Save Settings</button>
+          <button class="ghost-btn" id="testBackendBtn">Test Connection</button>
+        </div>
+        <div class="version">NEON GRAB v1.0.0</div>
+      </section>
+
+    </main>
+
+    <div class="toast" id="toast"></div>
+  </div>
+  <script src="storage.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
